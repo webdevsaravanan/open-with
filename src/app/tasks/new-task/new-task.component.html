@@ -1,0 +1,25 @@
+<div class="modal_content">
+  <div class="modal-header">
+    <h5 class="modal-title">Add new movie</h5>
+    <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Close click')"></button>
+  </div>
+		<div class="modal-body">
+<form (ngSubmit)="onAddTask(title.value, url.value)" #form>
+  <p>
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" #title />
+  </p>
+  <p>
+    <label for="url">URL</label>
+    <input type="text" id="url" name="url" #url />
+  </p>
+    <div class="container" id="actions">
+    <div class="row">
+    <div class="col text-end">
+    <button>Add Movie</button>
+    </div>
+    </div>
+    </div>
+  </form>
+</div>
+    </div>

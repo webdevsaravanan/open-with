@@ -1,0 +1,27 @@
+<article class="status-open">
+  <header>
+    <div class="container-fluid px-0">
+  <div class="d-flex align-items-center w-100">
+    <div class="d-flex align-items-center gap-2">
+      <span (click)="openUrl(task().url)"><h4 class='mb-0'>{{ task().title }}</h4>
+      </span>
+  </div>
+    <div class="ms-auto text-end">
+    <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="onRemoveTaskClick(task().id)"></button>
+</div>
+    </div>
+    </div> 
+  </header>
+  <span (click)="openUrl(task().url)"><p>{{ task().url.substring(0,40)+"..." }}</p>
+    @if(task().createdOn !=  undefined ){
+    <span style="font-style: italic;font-size: x-small;">
+      @if(task().createdOn != undefined && task().updatedOn == undefined) {
+        {{ task().createdOn | date: 'medium' }}
+      }
+      @if(task().updatedOn != undefined) {
+        {{ task().updatedOn | date: 'medium' }}
+      }
+    </span> 
+  }
+  </span>
+</article>

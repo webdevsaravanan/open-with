@@ -1,0 +1,33 @@
+<br/>
+<header>
+  <div class="container-fluid px-0">
+  <div class="row">
+    <div class="col text-start">
+      <p>
+    <select name="packageName" id="packageName" (change)="onChangePackageName($event)">
+      <option value="org.videolan.vlc">VLC</option>
+      <option value="org.drm.player">IPTV DRM Stream Player</option>
+      <!-- <option value="MxPlayerPro">MX Player Pro</option>
+      <option value="Splayer">Splayer</option>
+      <option value="NovaPlayer">Nova Player</option>
+      <option value="MPV">MPV</option>
+      <option value="JustPlayer">Just Player</option>
+      <option value="nPlayer">nPlayer</option> -->
+    </select>
+  </p>
+    </div>
+    <div class="col text-end">
+      <p>
+    <button class="btn btn-sm btn-warning" (click)="open()">Add Movie</button>
+  </p>
+    </div>
+  </div>
+</div>
+</header>
+<ul>
+  @for (task of tasks | async; track task.id) {
+      <li>
+      <app-task-item [task]="task" (openMovie)="openWith($event)"/>
+      </li>
+    }
+</ul>
