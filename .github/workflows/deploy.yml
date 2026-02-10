@@ -33,12 +33,12 @@ jobs:
 
       - name: Build Angular
         run: |
-          npx ng build --configuration production --base-href /angular-learning-service/
+          npx ng build --configuration production --base-href /open-with/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist/angular-learning-service/browser
+          path: dist/open-with/browser
 
   deploy:
     needs: build
