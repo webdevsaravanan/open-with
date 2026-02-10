@@ -25,7 +25,7 @@ export class TasksListComponent {
     this.selectedPackageName = selectElement.value;
   }
   openWith(url: string) {
-    url="intent:"+url+"#Intent;action=android.intent.action.VIEW;type=video/*;package="+this.selectedPackageName+";s.tite=Title;end";
+    url="intent:"+url+"#Intent;action=android.intent.action.VIEW;type=video/*;package="+this.selectedPackageName+"; end";
     window.open(url, '_blank');
 
   }
