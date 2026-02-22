@@ -25,8 +25,16 @@ export class TasksListComponent {
     this.selectedPackageName = selectElement.value;
   }
   openWith(url: string) {
-    url="intent:"+url+"#Intent;action=android.intent.action.VIEW;type=video/*;package="+this.selectedPackageName+";end";
+if (/android/i.test(navigator.userAgent)) {
+ url="intent:"+url+"#Intent;action=android.intent.action.VIEW;type=video/*;package="+this.selectedPackageName+";end";
     window.open(url, '_blank');
+}
+else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
+  window.location.href = "vlc://" + videoUrl;
+
+} else {
+  window.location.href = videoUrl; // fallback
+}
   }
 }
