@@ -31,10 +31,10 @@ if (/android/i.test(navigator.userAgent)) {
 }
 else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
-  window.location.href = "vlc://" + videoUrl;
+  window.location.href = "vlc://" + url;
 
 } else {
-  window.location.href = videoUrl; // fallback
+  window.location.href = url; // fallback
 }
   }
 }
