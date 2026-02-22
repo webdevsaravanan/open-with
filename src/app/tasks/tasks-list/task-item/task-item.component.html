@@ -16,7 +16,7 @@
       </div>
     </div>
     <div class="mt-2 small" (click)="openUrl(task().url)" style="cursor: pointer;">
-     <span>{{ task().url ? (task().url.length > 60 ? (task().url.substring(0,60) + '...') : task().url) : '' }}</span>
+     <span>{{ task().url ? (task().url.length > 25 ? (task().url.substring(0,25) + '...') : task().url) : '' }}</span>
       <!-- <a href="#" (click)="rate(task().id); $event.preventDefault()">Rate</a> -->
       <!-- <a href="#" class="ms-3" (click)="markWatched(task().id); $event.preventDefault()">Mark as watched</a> -->
     </div>
