@@ -4,15 +4,50 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Close click')"></button>
   </div>
 		<div class="modal-body">
-<form (ngSubmit)="onAddTask(title.value, url.value)" #form>
+<form (ngSubmit)="onAddTask(title.value,url.value,year.value,imdbID.value)" #form>
+  <p>
+    <input type="text" name="searchText" [(ngModel)]="searchText" placeholder="Enter movie name">
+    <label style="display: inline-block;"><input type="radio" for="searchby" name="searchby" value="title"  (change)="changeMode()" checked> Title</label>  
+    <label style="display: inline-block;"><input type="radio" for="searchby" name="searchby" value="imdbID"  (change)="changeMode()"> IMDb</label>
+    <label style="display: inline-block;"><input type="radio" for="searchby" name="searchby" value="manual" (change)="changeMode()"> manual</label>
+    <br/>
+    <br/>
+    <button (click)="search()" [disabled]="manualMode">Search</button>
+  </p>
+  @if(movies.length > 0 && !manualMode) {
+    <label for="searchResults">Search Results</label>
+    <div class="col text-start">
+      <p>
+    <select id="searchResults" name="searchResults" (change)="onSelectMovie($event)" #searchResults>
+      <option value="">Select a movie</option>
+      @for (movie of movies; track movie.imdbID) {
+      <option [value]="movie.imdbID">{{ movie.Title }} - {{ movie.Year }}</option>
+      } 
+    </select>
+    </p>
+    </div>
+  }
+    @if(movieSeelected == true && movies.length > 0 && !manualMode) {
+      <p>
+      <label for="poster">Movie</label>
+    <img id="poster" name="poster" #poster width="150">
+    </p>
+    }
+  <diV>
   <p>
     <label for="title">Title</label>
-    <input type="text" id="title" name="title" #title />
+    <input type="text" id="title" name="title" #title [disabled]="!manualMode"/>
   </p>
+  <p>
+    <label for="year">Year</label>
+    <input type="text" id="year" name="year" #year [disabled]="!manualMode"/>
+  </p>
+  </diV>
   <p>
     <label for="url">URL</label>
     <input type="text" id="url" name="url" #url />
   </p>
+    <input type="text" id="imdbID" name="imdbID" #imdbID style="display:none"/>
     <div class="container" id="actions">
     <div class="row">
     <div class="col text-end">

@@ -4,4 +4,6 @@ export interface Task {
   url: string;
   createdOn?: Date;
   updatedOn?: Date;
+  year?: string;
+  posterUrl?: string;
 }
