@@ -27,7 +27,7 @@ export class TasksListComponent {
   openWith(url: string) {
 if (/android/i.test(navigator.userAgent)) {
  url="intent:"+url+"#Intent;action=android.intent.action.VIEW;type=video/*;package="+this.selectedPackageName+";end";
-    window.href=url;
+    window.location.href=url;
 }
 else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
 
