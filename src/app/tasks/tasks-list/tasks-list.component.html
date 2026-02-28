@@ -1,6 +1,9 @@
 <br/>
 <header>
   <div class="container-fluid px-0">
+    <div class="container-fluid px-0 d-flex justify-content-center mb-3">
+  <img src="https://mygdrive.mvcollection.workers.dev/0:/openwith.png" alt="Centered Image" style="height: 70px; margin-left: 10px; margin-right: 10px;">
+</div>
   <div class="row">
     <div class="col text-start">
       <p>
@@ -16,9 +19,6 @@
     </select>
   </p>
     </div>
-    <div class="col justify-content-center">
-  <img src="https://mygdrive.mvcollection.workers.dev/0:/openwith.png" alt="Centered Image" style="height: 60px; margin-left: 70px; margin-right: 10px;">
-</div>
     <div class="col text-end">
       @if(isAdmin) {
       <p>
@@ -28,6 +28,7 @@
   </div>
 </div>
 </header>
+
 <ul>
   @for (task of tasks | async; track task.id) {
       <li>
