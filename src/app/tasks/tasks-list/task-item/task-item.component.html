@@ -11,7 +11,9 @@
       <div class="ms-auto text-end">
         <div class="d-flex align-items-center justify-content-end">
           <!-- <div class="me-2 fw-bold text-warning">{{ task().rating ? task().rating : '—' }} <span style="color:#f5c518">★</span></div> -->
+           @if(isAdmin) {
           <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="onRemoveTaskClick(task().id)"></button>
+           }
         </div>
       </div>
     </div>

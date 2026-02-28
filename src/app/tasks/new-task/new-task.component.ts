@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild,inject } from '@angular/core';
+import { Component, EventEmitter,Output,ElementRef, viewChild,inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from '../task.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -19,6 +19,8 @@ export class NewTaskComponent {
   constructor(private taskService: TaskService, private movieService: MovieService) {}
   movies: any[] = [];
   searchText = '';
+    @Output() taskAdded = new EventEmitter<string>(); // New Output EventEmitter
+  
   search() {
     // add mode to search by title or imdbID based on checkboxes
     let searchMode = 'title';
@@ -54,6 +56,7 @@ export class NewTaskComponent {
         next: () => {
           this.activeModal.close();
           this.formEl()?.nativeElement.reset();
+          this.taskAdded.emit('Task added successfully'); // Emit the event
         },
         error: err => {
           console.error('addTask error', err);

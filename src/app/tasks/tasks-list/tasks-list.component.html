@@ -16,10 +16,14 @@
     </select>
   </p>
     </div>
+    <div class="col justify-content-center">
+  <img src="https://mygdrive.mvcollection.workers.dev/0:/openwith.png" alt="Centered Image" style="height: 60px; margin-left: 70px; margin-right: 10px;">
+</div>
     <div class="col text-end">
+      @if(isAdmin) {
       <p>
-    <button class="btn btn-sm btn-warning" (click)="open()">Add Movie</button>
-  </p>
+    <button class="btn btn-sm btn-warning" (click)="openNewTaskModal()">Add Movie</button>
+  </p>}
     </div>
   </div>
 </div>
@@ -27,7 +31,7 @@
 <ul>
   @for (task of tasks | async; track task.id) {
       <li>
-      <app-task-item [task]="task" (openMovie)="openWith($event)"/>
+      <app-task-item [task]="task" (openMovie)="openWith($event)" (taskDeleted)="onTaskDeleted($event)"/>
       </li>
     }
 </ul>

@@ -1,14 +1,13 @@
-/// <reference types="@angular/localize" />
-
+import { provideHttpClient } from '@angular/common/http';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { AppComponent } from './app/app.component';
-
-import { provideHttpClient } from '@angular/common/http';
-// import { TaskService } from './app/tasks/task.service';
+import { appRoutes } from './app/routes' // Import your routes
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideHttpClient()
+    provideHttpClient(),
+    provideRouter(appRoutes, withComponentInputBinding()) // Configure the router
   ]
 }).catch((err) => console.error(err));
