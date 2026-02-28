@@ -39,13 +39,13 @@ export class NewTaskComponent {
         }
       });
   }
-  onAddTask(title: string, url: string, year: string,imdbID: string) {
+  onAddTask(title: string, url: string, year: string,imdbID: string,poster: string) {
     let posterUrl = "";
     if(!title || !url || !year){
       return;
     } 
     if(this.manualMode){
-      posterUrl = "N/A";
+      posterUrl = poster;
     }
     else{
       const selectedMovie = this.movies.find(m => m.imdbID === imdbID);

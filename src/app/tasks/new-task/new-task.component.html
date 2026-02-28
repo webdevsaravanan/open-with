@@ -4,7 +4,7 @@
     <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.close('Close click')"></button>
   </div>
 		<div class="modal-body">
-<form (ngSubmit)="onAddTask(title.value,url.value,year.value,imdbID.value)" #form>
+<form (ngSubmit)="onAddTask(title.value,url.value,year.value,imdbID.value,posterurl.value)" #form>
   <p>
     <input type="text" name="searchText" [(ngModel)]="searchText" placeholder="Enter movie name">
     <label style="display: inline-block;"><input type="radio" for="searchby" name="searchby" value="title"  (change)="changeMode()" checked> Title</label>  
@@ -41,6 +41,10 @@
   <p>
     <label for="year">Year</label>
     <input type="text" id="year" name="year" #year [disabled]="!manualMode"/>
+  </p>
+  <p [class.hide]="!manualMode">
+    <label for="posterurl">Poster</label>
+    <input type="text" id="posterurl" name="posterurl" #posterurl/>
   </p>
   </diV>
   <p>

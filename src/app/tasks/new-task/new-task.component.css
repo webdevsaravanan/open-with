@@ -50,3 +50,6 @@ button:active {
   background-color: #2c2a21;
   color: #f2e090;
 }
+.hide{
+  display: none;
+}
