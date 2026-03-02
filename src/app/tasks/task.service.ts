@@ -10,6 +10,7 @@ export class TaskService {
 private http=inject(HttpClient);
 
   private apiUrl = 'https://api.npoint.io/fe909c8a46d02f3afebe';
+  private seedrProxyUrl = 'https://seedrproxy.mvcollection.workers.dev/files';
 
   // Get all tasks
   getTasks(): Observable<Task[]> {
@@ -70,4 +71,19 @@ private http=inject(HttpClient);
       })
     );
   }
+
+  // Get files from Seedr proxy
+  getSeedrFiles(): Observable<any[]> {
+    return this.http.get<any[]>(this.seedrProxyUrl).pipe(
+      map(res => {
+        console.log('seedrFiles', res);
+        return res;
+      }),
+      catchError(err => {
+        console.error('getSeedrFiles failed', err);
+        return of([]);
+      })
+    );
+  }
+
 }

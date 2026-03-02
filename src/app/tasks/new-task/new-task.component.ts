@@ -1,4 +1,4 @@
-import { Component, EventEmitter,Output,ElementRef, viewChild,inject } from '@angular/core';
+import { Component, EventEmitter,Output,ElementRef, viewChild,inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TaskService } from '../task.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -11,7 +11,7 @@ import { MovieService } from '../movie.service';
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.css',
 })
-export class NewTaskComponent {
+export class NewTaskComponent implements OnInit {
   movieSeelected = false;
   manualMode = false;
   private formEl = viewChild<ElementRef<HTMLFormElement>>('form');
@@ -19,8 +19,20 @@ export class NewTaskComponent {
   constructor(private taskService: TaskService, private movieService: MovieService) {}
   movies: any[] = [];
   searchText = '';
-    @Output() taskAdded = new EventEmitter<string>(); // New Output EventEmitter
-  
+  @Output() taskAdded = new EventEmitter<string>(); // New Output EventEmitter
+  seedrMovies: any[] = [];
+  ngOnInit(): void {
+    this.taskService.getSeedrFiles().subscribe({
+      next: (res:any) => {
+        console.log('Seedr movies:', res);
+        this.seedrMovies = res || [];
+      },
+      error: (err:any) => {
+        console.error('Error fetching Seedr movies', err);
+      }
+    });
+  }
+
   search() {
     // add mode to search by title or imdbID based on checkboxes
     let searchMode = 'title';
@@ -99,6 +111,13 @@ export class NewTaskComponent {
       this.manualMode = true;
     } else {
       this.manualMode = false;
+    }
+  }
+  onSelectSeedrMovie(movie: any) {
+    const selectedSeedrMovie = this.formEl()?.nativeElement.querySelector('#seedrmovies') as HTMLInputElement;
+    const url = this.formEl()?.nativeElement.querySelector('#url') as HTMLInputElement;
+    if (selectedSeedrMovie && url) {
+      url.value = selectedSeedrMovie.value;
     }
   }
 }
