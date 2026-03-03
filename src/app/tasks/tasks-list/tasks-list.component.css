@@ -4,7 +4,7 @@
   margin-top: auto;
   margin-right: auto;
   margin-left: auto;
-  max-width: 40rem;
+  max-width: 70rem;
   border-radius: 4px;
   background-color: #44433f;
 }
@@ -33,14 +33,6 @@ select {
   font-size: 0.9rem;
 }
 
-ul {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
-  list-style: none;
-  margin: 0;
-  padding: 0.5rem;
-}
 .modal-backdrop {
   background-color: #000;
   opacity: 0.8 !important;

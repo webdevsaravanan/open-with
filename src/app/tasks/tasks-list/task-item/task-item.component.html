@@ -1,30 +1,14 @@
-<article class="movie-card p-2 border-1 rounded d-flex align-items-start">
-  <img (click)="openUrl(task().url)" [src]="task().posterUrl" alt="{{ task().title }} poster" width="96" height="140" class="me-3 rounded" style="cursor: pointer;"/>
-  <div class="flex-grow-1">
-    <div class="d-flex align-items-start">
-      <div (click)="openUrl(task().url)" style="cursor: pointer;">
-        <h5 class="mb-1" (click)="openUrl(task().url)" style="cursor: pointer;">{{ task().title }}</h5>
-        <div class="small">
-          {{ task().year ? task().year : '' }} <!--<span *ngIf="task().type"> • {{ task().type }}</span> -->
-        </div>
-      </div>
-      <div class="ms-auto text-end">
-        <div class="d-flex align-items-center justify-content-end">
-          <!-- <div class="me-2 fw-bold text-warning">{{ task().rating ? task().rating : '—' }} <span style="color:#f5c518">★</span></div> -->
-           @if(isAdmin) {
-          <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="onRemoveTaskClick(task().id)"></button>
-           }
-        </div>
-      </div>
-    </div>
-    <div class="mt-2 small" (click)="openUrl(task().url)" style="cursor: pointer;">
-     <span>{{ task().url ? (task().url.length > 25 ? (task().url.substring(0,25) + '...') : task().url) : '' }}</span>
-      <!-- <a href="#" (click)="rate(task().id); $event.preventDefault()">Rate</a> -->
-      <!-- <a href="#" class="ms-3" (click)="markWatched(task().id); $event.preventDefault()">Mark as watched</a> -->
-    </div>
-    <div class="mt-2 text-truncate small">
-       <span  style="font-style: italic;font-size: x-small;">{{ task().createdOn ? (task().createdOn | date:'short') : '' }}</span>
-      
-    </div>
+<article class="movie-card text-center p-1 h-100 position-relative">
+  <div class="poster-container mb-1" (click)="openUrl(task().url)" style="cursor: pointer;">
+    <img [src]="task().posterUrl" alt="{{ task().title }} poster" class="img-fluid rounded shadow-sm" style="aspect-ratio: 2/3; object-fit: cover; width: 100%;"/>
   </div>
+  <div (click)="openUrl(task().url)" style="cursor: pointer;">
+    <div class="movie-title text-truncate text-white fw-bold small" [title]="task().title">{{ task().title }}</div>
+    <div class="movie-year text-muted" style="font-size: 0.75rem;">{{ task().year }}</div>
+  </div>
+  @if(isAdmin) {
+    <button type="button" class="btn-delete-overlay" aria-label="Delete" (click)="onRemoveTaskClick(task().id); $event.stopPropagation()">
+      &times;
+    </button>
+  }
 </article>
