@@ -33,8 +33,30 @@
   <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-5 g-3">
     @for (task of tasks | async; track task.id) {
       <div class="col">
-        <app-task-item [task]="task" (openMovie)="openWith($event)" (taskDeleted)="onTaskDeleted($event)"/>
+        <app-task-item [task]="task" (openMovie)="openWith($event.url, $event.title)" (taskDeleted)="onTaskDeleted($event)"/>
       </div>
     }
   </div>
 </div>
+@if(showPlayer) {
+  <div class="video-title-overlay">
+  {{ selectedMovieTitle }}
+</div>
+<div class="player-overlay">
+  <div class="player-modal">
+
+    <button
+      class="close-btn"
+      (click)="ClosePlayer()">
+      ✕
+
+    </button>
+
+    <app-plyr-player
+      [streamUrl]="selectedUrl">
+    </app-plyr-player>
+
+  </div>
+</div>
+}
+

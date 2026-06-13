@@ -28,7 +28,7 @@ export class TaskItemComponent implements OnInit {
   private taskService = inject(TaskService);
   private modalService = inject(NgbModal);
 
-  @Output() openMovie = new EventEmitter<string>();
+  @Output() openMovie = new EventEmitter<{ url: string; title: string }>();
   @Output() taskDeleted = new EventEmitter<string>(); // New Output EventEmitter
 
   task = input.required<Task>();
@@ -49,7 +49,7 @@ export class TaskItemComponent implements OnInit {
     }
   }
   
-  openUrl(url: string) {
-    this.openMovie.emit(url);
+  openUrl(url: string, title: string) {
+    this.openMovie.emit({ url, title });
   }
 }

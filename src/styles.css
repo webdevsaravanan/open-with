@@ -15,3 +15,28 @@ body {
   background-color: #2d2b24;
   color: #f5f1e0;
 }
+.video-js {
+  width: 100%;
+  height: 80vh;
+  background: #000;
+}
+
+:host ::ng-deep .vjs-control-bar {
+  background: linear-gradient(
+    transparent,
+    rgba(0,0,0,.9)
+  ) !important;
+}
+
+:host ::ng-deep .vjs-big-play-button {
+  border-radius: 50% !important;
+  background: rgba(229, 9, 20, .9) !important;
+}
+
+:host ::ng-deep .vjs-play-progress {
+  background: #e50914 !important;
+}
+
+:host ::ng-deep .vjs-volume-level {
+  background: #e50914 !important;
+}
