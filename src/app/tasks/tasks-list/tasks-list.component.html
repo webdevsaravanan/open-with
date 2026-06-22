@@ -24,6 +24,10 @@
       <p>
     <button class="btn btn-sm btn-warning" (click)="openNewTaskModal()">Add Movie</button>
   </p>}
+@if(!isAdmin) {
+      <p>
+    <button class="btn btn-sm btn-warning" (click)="copyPlaylist()">Playlist</button>
+  </p>}
     </div>
   </div>
 </div>
