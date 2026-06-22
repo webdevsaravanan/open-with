@@ -76,4 +76,7 @@ this.currentDownloadUrl="";
   onTaskAdded(message: string) {
     this.tasks = this.taskService.getTasks();
   }
+copyPlaylist(){ 
+    navigator.clipboard.writeText("https://gist.githubusercontent.com/webdevsaravanan/e56d8cfe808c1ee7325ade32a426afd8/raw/movies.m3u");
+}
 }
